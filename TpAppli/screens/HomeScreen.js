@@ -9,20 +9,23 @@ export default function HomeScreen({navigation}) {
 
 
     const findGame = (text) => {
-        const found = GAMES.filter(element => element.title.toUpperCase() == text.toUpperCase())
-        setGameFound(found)
-        console.log(found);
+
+        if(text != ''){
+            const found = GAMES.filter(element => element.title.toUpperCase() == text.toUpperCase())
+            setGameFound(found)
+
+        }
     }
 
   return (
     <View style={styles.container}>
-        <ImageBackground source={require('./assets/abstract.jpg')} resizeMode="cover" style={styles.image}>
+         <ImageBackground source={require('./assets/abstract.jpg')} resizeMode="cover" style={styles.image}> 
             <View style={styles.top}>
                 <Text style={styles.home}>Bienvenue</Text>
                 <Image source={require('./assets/smiley.png')} style={styles.smiley}></Image>
-                <Text></Text>
+                <Text >Recherche et commenter vos jeux préférés</Text>
             </View>
-            <TextInput placeholder='text' onChangeText={(text) => setSearch(text)} style={styles.search}></TextInput>
+            <TextInput placeholder='text' onChangeText={(text) => setSearch(text)} style={styles.search}/>
             <Button title="Recherche" onPress={() => findGame(search)}></Button>
             {gameFound.map(i => <Pressable onPress={() => navigation.navigate ("Detail", {game : i})}><Text style={styles.result}>{i.title}</Text></Pressable>)}
         </ImageBackground>
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     search : {
-        fontSize : 24,
+        
         color: "white"
     },
     result : {

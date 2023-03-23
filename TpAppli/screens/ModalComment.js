@@ -6,7 +6,7 @@ export default function ModalComment(props) {
     const [textComment, setTextComment] = useState("")
 
     function addComment() {
-        console.log("Ajout d'un article")
+       
         props.addComment(textComment);
     }
 
@@ -14,7 +14,7 @@ export default function ModalComment(props) {
   return (
     <Modal visible={props.visible} animationType="slide">
     <View>
-            <TextInput multiline={true} numberOfLines={4} style={styles.commentaire} placeholder='text' onChangeText={(textComment) => setTextComment(textComment)}/>
+            <TextInput multiline={true} numberOfLines={4} placeholder='text' onChangeText={(textComment) => setTextComment(textComment)}/>
             <Pressable onPress={addComment}><Text>Envoyer</Text></Pressable>
             <Text></Text>
 

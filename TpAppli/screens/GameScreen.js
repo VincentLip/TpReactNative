@@ -12,7 +12,6 @@ export default function GameScreen({navigation , route}) {
 
         GAMES.forEach(element => {
 
-            console.log(element.categoryIds.filter(e => e == id))
             if(id == element.categoryIds.filter(e => e == id)){
                 tmpGame.push(element)
             }        

@@ -13,12 +13,12 @@ export default function GameDetailScreen({navigation ,route}) {
     const [comments,setComments] = useState([])
 
     function openModale(){
-        console.log("clique sur bouton ajouter article")
+       
         setModalIsVisible(true)
     }
 
     function closeModale(){
-        console.log("clique sur bouton de ma modal pour fermer ma modal")
+        
         setModalIsVisible(false)
     }
 
@@ -54,7 +54,7 @@ export default function GameDetailScreen({navigation ,route}) {
       }
 
       function addComment(comment){
-        // console.log("Ajout d'un articles à ma liste : "+article)
+        
         setComments(commentsCurrent => [
            ...commentsCurrent,
            { text : comment , id : Math.random().toString()}
@@ -126,8 +126,5 @@ const styles = StyleSheet.create({
         alignItems : "center",
         justifyContent : "center"
       },
-      commentaire : {
-    
-
-      }
+      
 })
