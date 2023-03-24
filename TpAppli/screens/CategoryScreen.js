@@ -1,4 +1,4 @@
-import { Pressable,FlatList, StyleSheet, Text, View } from 'react-native'
+import { Pressable,FlatList, StyleSheet, Text, View ,ImageBackground} from 'react-native'
 import React from 'react'
 import { CATEGORIES } from '../data/data'
 
@@ -10,11 +10,13 @@ export default function CategoryScreen({navigation}) {
     renderItem={(itemData) => {
         return(
           <View style={styles.gridItem}>
+            <ImageBackground source={require('./assets/abstract.jpg')} resizeMode="cover" style={styles.image}> 
             <Pressable onPress={() => navigation.navigate('GameScreen', {idCategory : itemData.item.id})} style={({pressed}) =>  [ styles.button, pressed ? styles.buttonPressed : null] }>
-                <View style={[styles.innerContainer, {backgroundColor : itemData.item.color}]}>
+                <View style={[styles.innerContainer]}>
                     <Text style={styles.title}>{itemData.item.title}</Text>
                 </View>
             </Pressable>
+            </ImageBackground>
         </View>
         )
         
@@ -52,5 +54,9 @@ title : {
     fontWeight : 'bold',
     color : "white",
     fontSize : Platform.OS === 'android' ? 20 : 30,
-}
+},
+image: {
+  flex: 1,
+  justifyContent: 'center',
+},
 })

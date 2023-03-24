@@ -3,7 +3,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
 import CategoryScreen from './screens/CategoryScreen';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import GameScreen from './screens/GameScreen';
 import GameDetailScreen from './screens/GameDetailScreen';
 import HomeScreen from './screens/HomeScreen';

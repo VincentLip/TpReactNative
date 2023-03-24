@@ -1,4 +1,4 @@
-import { Button,FlatList,Image,Pressable,StyleSheet, Text, View } from 'react-native'
+import { Button,FlatList,Image,Pressable,StyleSheet, Text, View,ImageBackground } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { CATEGORIES, GAMES } from '../data/data'
 
@@ -19,8 +19,18 @@ export default function GameScreen({navigation , route}) {
     }
     Find(idCategory)
 
+    useLayoutEffect(() => {
+        const categoryTitle = CATEGORIES.find(
+            (category) => category.id == idCategory
+        ).title;
+
+        navigation.setOptions({
+            title : categoryTitle
+        })
+    },[idCategory, navigation])
 
   return (
+        <ImageBackground source={require('./assets/abstract.jpg')} resizeMode="cover" style={styles.imageback}> 
     <View>
         <FlatList data={tmpGame} renderItem={(itemData) => {
         return (
@@ -34,6 +44,7 @@ export default function GameScreen({navigation , route}) {
                         <View style={styles.details}>
                             <Text style={styles.genre}>{itemData.item.genre}</Text>
                         </View>
+            
                     </View>
                 </Pressable>
             </View>
@@ -42,6 +53,7 @@ export default function GameScreen({navigation , route}) {
         return item.id
     }}></FlatList>
     </View>
+    </ImageBackground>
   )
 }
 
@@ -82,4 +94,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "black",
     },
+    imageback: {
+        flex: 1,
+        justifyContent: 'center',
+      },
 })
